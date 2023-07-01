@@ -1,1 +1,54 @@
-{"name":"zpp","devDependencies":{"@cryogenicplanet/tsdev":"latest","@types/node":"^14","husky":"latest","prettier":"latest","prettier-config-standard":"latest","typescript":"latest"},"scripts":{"build":"tsdev build","dev":"tsdev dev","dts":"tsdev dts","lint":"tsdev lint","prepare":"pnpm build \u0026\u0026 pnpm dts","start":"tsdev start"},"files":["dist","!dist/src"],"engines":{"node":"\u003e12"},"main":"dist/index.js","typings":"dist/index.d.ts","husky":{"hooks":{"pre-commit":"tsdev prettier","pre-push":"tsdev lint"}},"version":"0.1.0","license":"MIT","module":"dist/index.es.js","prettier":"prettier-config-standard","tsdev":{"packageManager":2}}
+{
+  "name": "zpp",
+  "module": "src/zpp.ts",
+  "type": "module",
+  "version": "0.0.1",
+  "devDependencies": {
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
+    "zod": "^3.21.4",
+    "zod-to-json-schema": "^3.21.3"
+  },
+  "scripts": {
+    "build": "tsup src/zpp.ts --format cjs,esm --dts-resolve --minify --clean --sourcemap --legacy-output --target node14 --out-dir dist"
+  },
+  "peerDependencies": {
+    "zod": "^3.21.4",
+    "zod-to-json-schema": "^3.21.3"
+  },
+  "dependencies": {
+    "endent": "^2.1.0"
+  },
+  "types": "./src/zpp.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./src/zpp.ts",
+      "import": {
+        "default": "./src/zpp.ts"
+      }
+    }
+  },
+  "publishConfig": {
+    "exports": {
+      "./package.json": "./package.json",
+      ".": {
+        "types": "./dist/zpp.d.ts",
+        "import": {
+          "default": "./dist/zpp.js"
+        },
+        "default": "./dist/zpp.cjs",
+        "require": "./dist/zpp.js"
+      }
+    },
+    "types": "./dist/zpp.d.ts"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "zod",
+    "zod-to-json-schema"
+  ]
+}
