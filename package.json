@@ -1,8 +1,10 @@
 {
-  "name": "zpp",
+  "name": "@cryop/zpp",
   "module": "src/zpp.ts",
   "type": "module",
   "version": "0.0.1",
+  "private": false,
+
   "devDependencies": {
     "tsup": "^7.1.0",
     "typescript": "^5.1.6",
@@ -30,6 +32,7 @@
     }
   },
   "publishConfig": {
+    "access": "public",
     "exports": {
       "./package.json": "./package.json",
       ".": {
